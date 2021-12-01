@@ -5,6 +5,6 @@ const route = require("./routes")
 
 router.get("/", route.index)
 
-router.post("/contact/:email", email.sendEmail)
+router.post("/contact/:email", email.sendMail)
 
 module.exports = router
