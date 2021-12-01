@@ -11,7 +11,8 @@ let transporter = nodemailer.createTransport({
 module.exports = {
     nodemailer, 
     transporter, 
-    sendMail: transporter.sendMail({
+    sendMail: (req, res)=>{
+        transporter.sendMail({
         from: `${req.body.name} <devmayke@gmail.com>`,
         to: req.params.email,
         subject: req.body.subject,
@@ -21,5 +22,5 @@ module.exports = {
         res.send('email enviado com sucesso')
       }).catch((err) => {
         console.log(err)
-      })   
+      })}
 }
