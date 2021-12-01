@@ -1,23 +1,10 @@
 const express = require("express")
 const router = express.Router()
 const email = require("./nodemailer")
+const route = require("./routes")
 
-router.get("/", (req, res)=>{
-  res.send("app funcionando")
-})
+router.get("/", route.index)
 
-router.post("/contact/:email", (req, res) => {
-  email.transporter.sendMail({
-    from: `${req.body.name} <devmayke@gmail.com>`,
-    to: req.params.email,
-    subject: req.body.subject,
-    html: `Enviado de: ${req.body.email}` + `<br>` + `${req.body.message}`
-  }).then((sucesso) => {
-    console.log(sucesso)
-    res.send('email enviado com sucesso')
-  }).catch((err) => {
-    console.log(err)
-  })
-})
+router.post("/contact/:email", email.sendEmail)
 
 module.exports = router

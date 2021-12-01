@@ -10,5 +10,16 @@ let transporter = nodemailer.createTransport({
 })
 module.exports = {
     nodemailer, 
-    transporter    
+    transporter, 
+    sendEmail: nodemailer.transporter.sendMail({
+        from: `${req.body.name} <devmayke@gmail.com>`,
+        to: req.params.email,
+        subject: req.body.subject,
+        html: `Enviado de: ${req.body.email}` + `<br>` + `${req.body.message}`
+      }).then((sucesso) => {
+        console.log(sucesso)
+        res.send('email enviado com sucesso')
+      }).catch((err) => {
+        console.log(err)
+      })   
 }
