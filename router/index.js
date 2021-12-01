@@ -8,7 +8,7 @@ router.get("/", (req, res)=>{
 
 router.post("/contact/:email", (req, res) => {
   email.transporter.sendMail({
-    from: `${req.body.name} <incognator@gmail.com>`,
+    from: `${req.body.name} <devmayke@gmail.com>`,
     to: req.params.email,
     subject: req.body.subject,
     html: `Enviado de: ${req.body.email}` + `<br>` + `${req.body.message}`
