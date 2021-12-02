@@ -17,7 +17,7 @@ module.exports = {
         if(req.body._autoresponse){
             transporter.sendMail({
                 from: `${req.body.name} <devmayke@gmail.com>`,
-                to: req.params.email,
+                to: req.body.email,
                 subject: "Recebi seu email",
                 html: `${req.body._autoresponse}:<br>` + `${req.body.message}`
               }).then((sucesso) => {
