@@ -26,6 +26,5 @@ module.exports = {
   
     // If successful
     return res.json({ success: true, msg: 'Captcha passed' });
-  });
   }
 }
