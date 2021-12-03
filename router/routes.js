@@ -1,30 +1,26 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 const { stringify } = require('querystring');
 
 module.exports = {
   index:(req, res)=>{
-    res.send("home")
+    res.sendFile(__dirname + "/index.html")
 
   },
-  recaptcha:(req, res)=>{
-    const secretKey = '6LdpvDEUAAAAAHszsgB_nnal29BIKDsxwAqEbZzU';
-
-    // Verify URL
+  recaptcha:async (req, res)=>{
+    console.log("captcha :", req.body.captcha || "não foi recebido")
+    const secretKey = '6LeK0XYdAAAAALd73PVG-HBUWREu62RTWSH_KZ1w'
     const query = stringify({
       secret: secretKey,
       response: req.body.captcha,
       remoteip: req.connection.remoteAddress
-    });
+    })
     const verifyURL = `https://google.com/recaptcha/api/siteverify?${query}`;
-  
-    // Make a request to verifyURL
-    const body = await fetch(verifyURL).then(res => res.json());
-  
-    // If not successful
-    if (body.success !== undefined && !body.success)
-      return res.json({ success: false, msg: 'Failed captcha verification' });
-  
-    // If successful
-    return res.json({ success: true, msg: 'Captcha passed' });
+     axios(verifyURL)
+     .then(data=>{
+      res.json(data.data)
+     })
+     .catch(e=>{
+       console.log(e)
+     })   
   }
 }
