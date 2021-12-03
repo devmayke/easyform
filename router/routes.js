@@ -4,11 +4,10 @@ const { stringify } = require('querystring');
 module.exports = {
   index:(req, res)=>{
     res.sendFile(__dirname + "/index.html")
-
   },
   recaptcha:async (req, res)=>{
     console.log("captcha :", req.body.captcha || "não foi recebido")
-    const secretKey = '6LeK0XYdAAAAALd73PVG-HBUWREu62RTWSH_KZ1w'
+    const secretKey = '6Ld2YncdAAAAAHe2AFDDyQJFpT0JyrkjKQVfZpEx'
     const query = stringify({
       secret: secretKey,
       response: req.body.captcha,
