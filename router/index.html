@@ -35,7 +35,7 @@
   <div class="form-container">
     <div class="container">
       <h1 class="mb-3">Contato</h1>
-      <form class="easyform" target="_blank" action="https://easyform.herokuapp.com/devmayke@gmail.com" method="POST">
+      <form class="easyform" target="_blank" action="localhost:7000/devmayke@gmail.com" method="POST">
         <div class="form-group">
           <div class="form-row">
             <div class="col mb-2">
@@ -64,7 +64,7 @@
     document.querySelector(".easyform").addEventListener("submit",(e)=>{
       e.preventDefault()
       const captcha  = document.querySelector('#g-recaptcha-response').value
-      fetch("easyform.herokuapp.com/recaptcha",{
+      fetch("localhost:7000/recaptcha",{
         method:"POST",
         headers:{ 'Content-type': 'application/json' },
         body:JSON.stringify({captcha:captcha})
