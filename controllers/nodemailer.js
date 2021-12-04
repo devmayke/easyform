@@ -12,7 +12,9 @@ module.exports = {
   nodemailer,
   transporter,
   sendMail: (req, res) => {
+    console.log(req.body.email)
     if (req.body._autoresponse) {
+      
       transporter.sendMail({
         from: `${req.body.name} <devmayke@gmail.com>`,
         to: req.body.email || "",
@@ -31,7 +33,6 @@ module.exports = {
       subject: req.body.subject,
       html: `Enviado de: ${req.body.email}` + `<br>` + `${req.body.message}`
     }).then((sucesso) => {
-
       res.send('email enviado com sucesso')
     }).catch((err) => {
       console.log(err)

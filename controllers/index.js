@@ -1,12 +1,13 @@
 const express = require("express")
 const router = express.Router()
 const email = require("./nodemailer")
-const route = require("./routes")
+const recaptcha = require("./recaptcha")
+const home = require("./home")
 
-router.get("/", route.index)
+router.get("/", home)
 
 router.post("/contact/:email", email.sendMail)
-router.post("/recaptcha", route.recaptcha)
+router.post("/recaptcha", recaptcha)
 
 
 module.exports = router
