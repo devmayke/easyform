@@ -1,2 +1,2 @@
 # easyform
-API de envio de emails
+recaptcha + envio de emails
