@@ -2,7 +2,7 @@ const axios = require('axios');
 const { stringify } = require('querystring');
 
 module.exports = async (req, res) => {
-  const secretKey = '6Ld2YncdAAAAAHe2AFDDyQJFpT0JyrkjKQVfZpEx'
+  const secretKey = process.env.RECAPTCHA_KEY
   const query = stringify({
     secret: secretKey,
     response: req.body.captcha,

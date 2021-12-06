@@ -4,8 +4,8 @@ let transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "devmayke@gmail.com",
-    pass: "bdivtgwyjgibqenc"
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   }
 })
 module.exports = {

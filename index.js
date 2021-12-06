@@ -4,6 +4,7 @@ const router = require("./controllers/index")
 const cors = require("cors")
 const ejs = require("ejs")
 const path = require("path")
+require('dotenv').config()
 let PORT = 5000
 
 app.set("view engine", "ejs")
