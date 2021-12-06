@@ -12,7 +12,6 @@ module.exports = {
   nodemailer,
   transporter,
   sendMail: (req, res) => {
-    console.log(req.body.email)
     if (req.body._autoresponse) {
       
       transporter.sendMail({
@@ -26,16 +25,21 @@ module.exports = {
         console.log(err)
       })
     }
+    if(req.body.captchaSuccess){
+      const {email, message, name, _autoresponse} = req.body
+      transporter.sendMail({
+        from: `${req.body.name} <devmayke@gmail.com>`,
+        to: req.params.email || "",
+        subject: req.body.subject,
+        html: `Enviado de: ${req.body.email}` + `<br>` + `${req.body.message}`
+      }).then((sucesso) => {
+    
+        res.json({enviado:true})
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+    }
 
-    transporter.sendMail({
-      from: `${req.body.name} <devmayke@gmail.com>`,
-      to: req.params.email || "",
-      subject: req.body.subject,
-      html: `Enviado de: ${req.body.email}` + `<br>` + `${req.body.message}`
-    }).then((sucesso) => {
-      res.send('email enviado com sucesso')
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+    
 }

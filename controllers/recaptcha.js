@@ -2,7 +2,6 @@ const axios = require('axios');
 const { stringify } = require('querystring');
 
 module.exports = async (req, res) => {
-  console.log("captcha :", req.body.captcha || "não foi recebido")
   const secretKey = '6Ld2YncdAAAAAHe2AFDDyQJFpT0JyrkjKQVfZpEx'
   const query = stringify({
     secret: secretKey,
@@ -13,6 +12,7 @@ module.exports = async (req, res) => {
   axios(verifyURL)
     .then(data => {
       res.json(data.data)
+
     })
     .catch(e => {
       console.log(e)

@@ -22,25 +22,24 @@
         <div class="form-group">
           <div class="form-row">
             <div class="col mb-2">
-              <input type="text" name="name" class="form-control" placeholder="Nome" required>
+              <input type="text" name="name" id= "name" class="form-control" placeholder="Nome" >
             </div>
             <div class="col mb-2">
-              <input type="email" name="email" class="form-control" placeholder="Email" required>
+              <input type="email" name="email" id = "email" class="form-control" placeholder="Email" >
             </div>
             <div class="col mb-2">
-              <input type="text" name="subject" class="form-control" placeholder="Assunto" required>
+              <input type="text" name="subject" id= "subject" class="form-control" placeholder="Assunto" >
             </div>
           </div>
         </div>
         <div class="form-group">
-          <textarea placeholder="Digite sua mensagem..." class="form-control" name="message" rows="10"
-            required></textarea>
+          <textarea placeholder="Digite sua mensagem..." class="form-control" id="message" name="message" rows="10"></textarea>
         </div>
         <div class="g-recaptcha" data-sitekey="6Ld2YncdAAAAAKmufaKQWSBur575mWmK9pP0n-M5"></div>
-        <input type="submit" class="g-recaptcha btn btn-lg btn-dark btn-block" value="Enviar Email"
-          data-sitekey="6Ld2YncdAAAAAKmufaKQWSBur575mWmK9pP0n-M5" />
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_autoresponse" value="Olá, recebi sua mensagem e lhe responderei assim que possível">
+        <input type="hidden" id="_autoresponse" name="_autoresponse" value="Olá, recebi sua mensagem e lhe responderei assim que possível">
+        <input type="submit" class="g-recaptcha btn-send btn btn-lg btn-dark btn-block" value="Enviar Email"
+          data-sitekey="6Ld2YncdAAAAAKmufaKQWSBur575mWmK9pP0n-M5" />
       </form>
     </div>
   </div>
