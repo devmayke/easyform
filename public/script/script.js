@@ -4,7 +4,7 @@ function $(value) {
 $(".btn-send").addEventListener("click", e => {
 
   const captcha = document.querySelector('#g-recaptcha-response').value
-  fetch("http://localhost:5000/recaptcha", {
+  fetch("http://localhost:7000/recaptcha", {
     method: "POST",
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify({ captcha: captcha })
@@ -12,7 +12,7 @@ $(".btn-send").addEventListener("click", e => {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        fetch("http://localhost:5000/contact/devmayke@gmail.com", {
+        fetch("http://localhost:7000/contact/devmayke@gmail.com", {
           method: "POST",
           headers: { 'Content-type': 'application/json' },
           body: JSON.stringify({
